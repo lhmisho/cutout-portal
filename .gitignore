@@ -118,7 +118,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-# .env
+.env
 .env/
 .venv/
 env/
@@ -158,5 +158,6 @@ Thumbs.db
 # profiling data
 .prof
 
+.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
