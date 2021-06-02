@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 import environ
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     DEBUG=(bool, False),
@@ -144,13 +145,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#EMAIL
+# EMAIL
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST')
@@ -159,7 +159,6 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_PORT = env('EMAIL_PORT')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 FROM_EMAIL = env('FROM_EMAIL')
-
 
 # Rest register
 REST_REGISTRATION = {
