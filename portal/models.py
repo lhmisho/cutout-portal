@@ -17,6 +17,7 @@ class Requirement(BaseModel):
     title = models.CharField(max_length=200)
     options = JSONField(null=True, blank=True, default=None)
     is_active = models.BooleanField(default=True)
+    is_default = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -27,6 +28,7 @@ class Addons(BaseModel):
     options = JSONField(default=None, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     is_active = models.BooleanField(default=True)
+    is_default = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

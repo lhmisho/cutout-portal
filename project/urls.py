@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/login/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/accounts/', include('rest_registration.api.urls')),
-    path('api/portal/', include('portal.urls')),
+    path('api/portal/v1/', include('portal.urls')),
 ]
 
 if settings.DEBUG:
