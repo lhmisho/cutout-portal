@@ -3,8 +3,8 @@ from django.db.models import JSONField
 
 
 class BaseModel(models.Model):
-    created_by = models.CharField(max_length=100, null=True)
-    updated_by = models.CharField(max_length=100, null=True)
+    created_by = models.CharField(max_length=100, null=True, blank=True, default=None)
+    updated_by = models.CharField(max_length=100, null=True, blank=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

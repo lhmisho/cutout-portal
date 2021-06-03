@@ -1,3 +1,13 @@
+def prepare_create_success_response(serializer_data):
+    """ prepare success response for all serializer """
+    response = {
+        'type': 'success',
+        'message': 'Data Successfully created',
+        'data': serializer_data
+    }
+    return response
+
+
 def prepare_success_response(serializer_data):
     """ prepare success response for all serializer """
     response = {
