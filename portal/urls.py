@@ -9,5 +9,7 @@ router.register('addons', AddonsViewSet)
 
 urlpatterns = [
     path('requirements/', RequirementsListAPiView.as_view()),
-    path('requirements/add/', RequirementsCreateApiView.as_view())
+    path('requirements/add/', RequirementsCreateApiView.as_view()),
+    path('requirements/update/<int:pk>/', RequirementsCreateApiView.as_view()),
+    path('requirements/delete/<int:pk>/', RequirementsCreateApiView.as_view()),
 ] + router.urls
