@@ -8,4 +8,4 @@ from portal.serializers.addons_serializers import AddonsSerializer
 class AddonsViewSet(viewsets.ModelViewSet):
     queryset = Addons.objects.all()
     serializer_class = AddonsSerializer
-    # permission_classes = [IsAdminUser, ]
+    permission_classes = [IsAdminUser, ]

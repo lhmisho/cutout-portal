@@ -12,6 +12,7 @@ from portal.utils.custom_responses import (prepare_success_response, prepare_err
                                            prepare_generic_error, prepare_create_success_response)
 from portal.services.validation_service import *
 
+
 class RequirementsListAPiView(generics.ListAPIView):
     """
     API for Applicant Requirements List API
@@ -39,7 +40,9 @@ class RequirementsCreateApiView(views.APIView):
             return Requirement.objects.filter(id=pk).first()
         except Requirement.DoesNotExist:
             return None
+
     ''
+
     def post(self, request, format=None):
         validate_error = validate_requirements_data(request.data)
         if validate_error is not None:
