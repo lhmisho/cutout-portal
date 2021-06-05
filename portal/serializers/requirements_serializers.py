@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from portal.models import Requirement
-from rest_framework import status
 
 
 class RequirementsModelSerializer(serializers.ModelSerializer):

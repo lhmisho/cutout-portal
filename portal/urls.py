@@ -1,15 +1,15 @@
 from django.urls import path
-from rest_framework.routers import DefaultRouter
 from .views.requirements_views import RequirementsListAPiView, RequirementsCreateApiView
-from .views.addons_views import AddonsViewSet
 
-router = DefaultRouter()
+from .views.addons_views import AddonsListView, AddonsCreateUpdateDeleteApiView
 
-router.register('addons', AddonsViewSet)
 
 urlpatterns = [
     path('requirements/', RequirementsListAPiView.as_view()),
     path('requirements/add/', RequirementsCreateApiView.as_view()),
     path('requirements/update/<int:pk>/', RequirementsCreateApiView.as_view()),
     path('requirements/delete/<int:pk>/', RequirementsCreateApiView.as_view()),
-] + router.urls
+    path('addons/', AddonsListView.as_view()),
+    path('addons/add/', AddonsCreateUpdateDeleteApiView.as_view()),
+    path('addons/<int:pk>/', AddonsCreateUpdateDeleteApiView.as_view()),
+]
