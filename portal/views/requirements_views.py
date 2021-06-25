@@ -1,15 +1,10 @@
-import json
 
-from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import generics, views, status
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.permissions import IsAuthenticated
 
-from portal.models import Requirement
 from portal.serializers.requirements_serializers import *
 from portal.utils.custom_responses import (prepare_success_response, prepare_error_response,
-                                           prepare_generic_error, prepare_create_success_response)
+                                           prepare_create_success_response)
 from portal.services.validation_service import *
 
 
@@ -40,8 +35,6 @@ class RequirementsCreateApiView(views.APIView):
             return Requirement.objects.filter(id=pk).first()
         except Requirement.DoesNotExist:
             return None
-
-    ''
 
     def post(self, request, format=None):
         validate_error = validate_requirements_data(request.data)
