@@ -39,13 +39,13 @@ class Instruction(BaseModel):
     addons = models.ForeignKey(Addons, on_delete=models.CASCADE)
 
 
-# class Order(BaseModel):
-#     image_path = models.CharField(max_length=200)
-#     image_quantity = models.IntegerField(null=True, blank=True, default=None)
-#     IMAGE_TYPE = [(1, 'Image'), (2, 'Portrait/Headshot/Model', (3, 'Others'))]
-#     image_type = models.IntegerField(choices=IMAGE_TYPE, default=1)
-#     save_metadata = models.BooleanField(default=False)
-#     instructions = models.ForeignKey(Instruction, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.id
+class Order(BaseModel):
+    image_path = models.CharField(max_length=200)
+    image_quantity = models.IntegerField(null=True, blank=True, default=None)
+    IMAGE_TYPE = [(1, 'Image'), (2, 'Portrait/Headshot/Model'), (3, 'Others')]
+    image_type = models.IntegerField(choices=IMAGE_TYPE, default=1)
+    save_metadata = models.BooleanField(default=False)
+    instructions = models.ForeignKey(Instruction, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.id
