@@ -28,7 +28,7 @@ class AddonsListView(generics.ListAPIView):
 
 
 class AddonsCreateUpdateDeleteApiView(views.APIView):
-    permission_classes = [permissions.IsAdminUser, ]
+    # permission_classes = [permissions.IsAdminUser, ]
 
     def get_object(self, pk):
         try:
@@ -37,7 +37,7 @@ class AddonsCreateUpdateDeleteApiView(views.APIView):
             return None
 
     def post(self, request, format=None):
-        validate_error = validate_requirements_data(request.data)
+        validate_error = validate_addons_data(request.data)
         if validate_error is not None:
             return Response(prepare_error_response(validate_error), status=status.HTTP_400_BAD_REQUEST)
         serializer = AddonsSerializer(data=request.data)

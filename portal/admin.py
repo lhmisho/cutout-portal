@@ -4,3 +4,5 @@ from .models import *
 
 admin.site.register(Requirement)
 admin.site.register(Addons)
+admin.site.register(Instruction)
+admin.site.register(Order)
