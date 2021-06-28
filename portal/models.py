@@ -55,4 +55,4 @@ class Order(BaseModel):
     addon = JSONField(blank=True, null=True, default=None)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
