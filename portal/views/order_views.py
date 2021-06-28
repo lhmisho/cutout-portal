@@ -8,14 +8,23 @@ from portal.services.validation_service import validate_order_data
 
 def prepare_order_data(order_data):
     data = {}
+    data.update({'addon': order_data.get('addon')})
     data.update({'job_title': order_data.get('job_title')})
-    data.update({'image_path': order_data.get('image') if order_data.get('image', None) is not None else order_data.get('image_path', None)})
     data.update({'image_type': order_data.get('image_type')})
     data.update({'requirement': order_data.get('requirement')})
-    data.update({'addon': order_data.get('addon')})
     data.update({'save_metadata': order_data.get('save_metadata')})
     data.update({'image_quantity': order_data.get('image_quantity')})
     data.update({'need_clipping_path': order_data.get('need_clipping_path')})
+    data.update({'image_path': order_data.get('image') if order_data.get('image', None) is not None else order_data.get('image_path', None)})
+
+    # calculate price
+    addons = order_data.get('addon')
+    requirements = order_data.get('requirement')
+    addons_price = sum([item.get('option_price') for item in addons])
+    requirements_price = sum([item.get('option_price') for item in requirements])
+    total = addons_price + requirements_price
+    # update total to data
+    data.update({'total': total})
     return data
 
 

@@ -7,6 +7,7 @@ class OrderCreateUpdateSerializer(serializers.ModelSerializer):
         model = Order
         fields = [
             'id',
+            'total',
             'addon',
             'job_title',
             'image_path',

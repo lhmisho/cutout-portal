@@ -53,6 +53,7 @@ class Order(BaseModel):
     save_metadata = models.BooleanField(default=False)
     requirement = JSONField(blank=True, null=True, default=None)
     addon = JSONField(blank=True, null=True, default=None)
+    total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
 
     def __str__(self):
         return str(self.id)
