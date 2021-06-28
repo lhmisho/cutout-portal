@@ -48,6 +48,7 @@ class Order(BaseModel):
     image_quantity = models.IntegerField(null=True, blank=True, default=None)
     IMAGE_TYPE = [(1, 'Image'), (2, 'Portrait/Headshot/Model'), (3, 'Others')]
     image_type = models.IntegerField(choices=IMAGE_TYPE, default=1)
+    job_title = models.CharField(max_length=200, null=True, blank=True, default=None)
     need_clipping_path = models.BooleanField(default=False)
     save_metadata = models.BooleanField(default=False)
     requirement = JSONField(blank=True, null=True, default=None)
