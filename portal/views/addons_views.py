@@ -13,7 +13,7 @@ class AddonsListView(generics.ListAPIView):
     """
         API for Applicant Addons List API
     """
-    permission_classes = [permissions.IsAdminUser, ]
+    # permission_classes = [permissions.IsAdminUser, ]
 
     def get(self, request, *args, **kwargs):
         try:

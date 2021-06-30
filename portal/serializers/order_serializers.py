@@ -2,6 +2,12 @@ from rest_framework import serializers
 from portal.models import Order
 
 
+class OrderModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ('id', 'job_title', 'total')
+
+
 class OrderCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
@@ -18,5 +24,6 @@ class OrderCreateUpdateSerializer(serializers.ModelSerializer):
             'need_clipping_path',
         ]
         read_only_fields = ['id', ]
+
 
 

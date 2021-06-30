@@ -1,10 +1,11 @@
 from rest_framework.response import Response
 from rest_framework import generics, views, status
 
-from portal.serializers.order_serializers import OrderCreateUpdateSerializer
-from portal.utils.custom_responses import prepare_create_success_response, prepare_error_response
+from portal.serializers.order_serializers import OrderCreateUpdateSerializer, OrderModelSerializer
+from portal.utils.custom_responses import prepare_create_success_response, prepare_error_response, \
+    prepare_success_response
 from portal.services.validation_service import validate_order_data
-from portal.models import Instruction
+from portal.models import Order
 from portal.serializers.instruction_serializers import InstructionModelSerializer
 
 
@@ -59,3 +60,23 @@ class OrderCreateView(views.APIView):
             serializer.save()
             return Response(prepare_create_success_response(serializer.data), status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class OrderListAPiView(generics.ListAPIView):
+    """
+    API for Applicant Requirements List API
+    """
+
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        try:
+            requirements = Order.objects.filter()
+            serializer = OrderModelSerializer(requirements, many=True)
+            return Response(prepare_success_response(serializer.data), status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(
+                prepare_error_response(str(e)),
+                status=status.HTTP_400_BAD_REQUEST
+            )
