@@ -3,7 +3,7 @@ from .views.requirements_views import RequirementsListAPiView, RequirementsCreat
 from .views.order_views import OrderCreateView, OrderListAPiView
 from .views.quotation_views import QuotationCreateView
 from .views.addons_views import AddonsListView, AddonsCreateUpdateDeleteApiView
-
+from .views.instruction_views import InstructionListApiView
 
 urlpatterns = [
     # requirements urls
@@ -20,4 +20,6 @@ urlpatterns = [
     path('order/create/', OrderCreateView.as_view()),
     # quotation data
     path('quotation/create/', QuotationCreateView.as_view()),
+    # instructions
+    path('instructions/', InstructionListApiView.as_view()),
 ]
