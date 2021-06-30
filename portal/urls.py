@@ -1,6 +1,7 @@
 from django.urls import path
 from .views.requirements_views import RequirementsListAPiView, RequirementsCreateApiView
 from .views.order_views import OrderCreateView
+from .views.quotation_views import QuotationCreateView
 from .views.addons_views import AddonsListView, AddonsCreateUpdateDeleteApiView
 
 
@@ -18,4 +19,7 @@ urlpatterns = [
 
     # order urls
     path('order/create/', OrderCreateView.as_view()),
+
+    # quotation data
+    path('quotation/create/', QuotationCreateView.as_view()),
 ]
