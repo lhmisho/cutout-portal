@@ -4,6 +4,8 @@ from rest_framework import generics, views, status
 from portal.serializers.order_serializers import OrderCreateUpdateSerializer
 from portal.utils.custom_responses import prepare_create_success_response, prepare_error_response
 from portal.services.validation_service import validate_order_data
+from portal.models import Instruction
+from portal.serializers.instruction_serializers import InstructionModelSerializer
 
 
 def prepare_order_data(order_data):
@@ -28,6 +30,16 @@ def prepare_order_data(order_data):
     return data
 
 
+def create_instruction(order_data):
+    instruction = {}
+    instruction.update({'job_title': order_data.get('job_title')})
+    instruction.update({'requirement': order_data.get('requirement')})
+    instruction.update({'addon': order_data.get('addon')})
+    serializer = InstructionModelSerializer(data=instruction)
+    if serializer.is_valid():
+        serializer.save()
+
+
 class OrderCreateView(views.APIView):
     def post(self, request, format=None):
         validate_error = validate_order_data(request.data)
@@ -35,6 +47,14 @@ class OrderCreateView(views.APIView):
             return Response(prepare_error_response(validate_error), status=status.HTTP_400_BAD_REQUEST)
         data = prepare_order_data(request.data)
         serializer = OrderCreateUpdateSerializer(data=data)
+
+        # save instruction
+        if request.data.get('save_instruction', False):
+            try:
+                create_instruction(request.data)
+            except Exception as e:
+                print(str(e))
+
         if serializer.is_valid():
             serializer.save()
             return Response(prepare_create_success_response(serializer.data), status=status.HTTP_201_CREATED)

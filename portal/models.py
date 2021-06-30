@@ -39,8 +39,10 @@ class Addons(BaseModel):
 
 class Instruction(BaseModel):
     job_title = models.CharField(max_length=100)
-    requirements = models.ForeignKey(Requirement, on_delete=models.CASCADE)
-    addons = models.ForeignKey(Addons, on_delete=models.CASCADE)
+    # requirements = models.ForeignKey(Requirement, on_delete=models.CASCADE)
+    requirement = JSONField(blank=True, null=True, default=None)
+    # addons = models.ForeignKey(Addons, on_delete=models.CASCADE)
+    addon = JSONField(blank=True, null=True, default=None)
 
 
 class Order(BaseModel):
