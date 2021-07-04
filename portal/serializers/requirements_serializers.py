@@ -11,5 +11,5 @@ class RequirementsModelSerializer(serializers.ModelSerializer):
 class RequirementsCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Requirement
-        fields = ['id', 'title', 'options', 'is_active', 'is_default']
+        fields = ['id', 'title', 'options', 'is_active', 'is_default', 'is_product', 'is_portrait']
         read_only_fields = ['id', ]
