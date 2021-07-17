@@ -18,7 +18,8 @@ def prepare_order_data(order_data):
     data.update({'save_metadata': order_data.get('save_metadata')})
     data.update({'image_quantity': order_data.get('image_quantity')})
     data.update({'need_clipping_path': order_data.get('need_clipping_path')})
-    data.update({'image_path': order_data.get('image') if order_data.get('image', None) is not None else order_data.get('image_path', None)})
+    data.update({'image_path': order_data.get('image') if order_data.get('image', None) is not None else order_data.get(
+        'image_path', None)})
 
     # calculate price
     addons = order_data.get('addon')

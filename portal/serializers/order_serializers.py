@@ -24,6 +24,3 @@ class OrderCreateUpdateSerializer(serializers.ModelSerializer):
             'need_clipping_path',
         ]
         read_only_fields = ['id', ]
-
-
-

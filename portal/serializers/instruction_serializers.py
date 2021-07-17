@@ -8,9 +8,9 @@ class InstructionListSerializer(serializers.ModelSerializer):
         fields = ['id', 'job_title']
         read_only_fields = ['id', ]
 
+
 class InstructionModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Instruction
         fields = ['id', 'job_title', 'requirement', 'addon']
         read_only_fields = ['id', ]
-

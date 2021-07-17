@@ -15,7 +15,9 @@ def prepare_quotation_data(quotation_data):
     data.update({'save_metadata': quotation_data.get('save_metadata')})
     data.update({'image_quantity': quotation_data.get('image_quantity')})
     data.update({'need_clipping_path': quotation_data.get('need_clipping_path')})
-    data.update({'image_path': quotation_data.get('image') if quotation_data.get('image', None) is not None else quotation_data.get('image_path', None)})
+    data.update({'image_path': quotation_data.get('image') if quotation_data.get('image',
+                                                                                 None) is not None else quotation_data.get(
+        'image_path', None)})
     return data
 
 
